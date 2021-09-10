@@ -1,0 +1,90 @@
+@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+
+$themePrimaryColor: "[theme: themePrimary, default: #6185a0]";
+$themeLighterAltColor: "[theme: themeLighterAlt, default: #f7fafb]";
+$themeLighterColor: "[theme: themeLighter, default: #e1e9f0]";
+$themeLightColor: "[theme: themeLight, default: #c8d7e3]";
+$themeTertiaryColor: "[theme: themeTertiary, default: #98b2c6]";
+$themeSecondaryColor: "[theme: themeSecondary, default: #7192ac]";
+$themeDarkAltColor: "[theme: themeDarkAlt, default: #587891]";
+$themeDarkColor: "[theme: themeDark, default: #4a657a]";
+$themeDarkerColor: "[theme: themeDarker, default: #374b5a]";
+$neutralLighterAltColor: "[theme: neutralLighterAlt, default: #9f8787]";
+$neutralLighterColor: "[theme: neutralLighter, default: #9c8585]";
+$neutralLightColor: "[theme: neutralLight, default: #967f7f]";
+$neutralQuaternaryAltColor: "[theme: neutralQuaternaryAlt, default: #8c7777]";
+$neutralQuaternaryColor: "[theme: neutralQuaternary, default: #857171]";
+$neutralTertiaryAltColor: "[theme: neutralTertiaryAlt, default: #806d6d]";
+$neutralTertiaryColor: "[theme: neutralTertiary, default: #bf9d9d]";
+$neutralSecondaryColor: "[theme: neutralSecondary, default: #aa8282]";
+$neutralPrimaryAltColor: "[theme: neutralPrimaryAlt, default: #956a6a]";
+$neutralPrimaryColor: "[theme: neutralPrimary, default: #432020]";
+$neutralDarkColor: "[theme: neutralDark, default: #6c4040]";
+$blackColor: "[theme: black, default: #572f2f]";
+$whiteColor: "[theme: white, default: #a28a8a]";
+$primaryBackgroundColor: "[theme: primaryBackground, default: #a28a8a]";
+$primaryTextColor: "[theme: primaryText, default: #432020]";
+$bodyBackgroundColor: "[theme: bodyBackground, default: #a28a8a]";
+$bodyTextColor: "[theme: bodyText, default: #432020]";
+$disabledBackgroundColor: "[theme: disabledBackground, default: #9c8585]";
+$disabledTextColor: "[theme: disabledText, default: #806d6d]";
+
+.getcrmsearchdivfloat {
+  float: right;
+}
+
+.getcrmsearch {
+  border: 1px solid rgba(229, 229, 229, 1);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+// Hide any class that starts with feedback
+div[class^="feedback_"] {
+  display: none !important;
+}
+
+body {
+  background-color: #eceeec;
+  color: black;
+}
+
+.app {
+  .top {
+    // height:60px;
+    text-align: center;
+    line-height: 2.5;
+    font-size: 15px;
+    font-weight: bold;
+    //display: flex;
+    //align-items: center;
+    //justify-content: center;
+    background-color: $ms-color-themePrimary;
+    color: $ms-color-white;
+  }
+
+  .bottom {
+    .phone {
+      font-size: 40px;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    .tel {
+      font-size: 17px;
+    }
+    font-family: Arial, sans-serif;
+    //height:40px;
+    text-align: left;
+    line-height: 1.8;
+    font-size: 15px; //9.5pt;
+
+    //display: flex;
+    //align-items: center;
+    //justify-content: center;
+    background-color: #f1f8ed;
+    color: #19502e;
+  }
+}

@@ -1,0 +1,102 @@
+[
+    {
+        "title": "Наш банк",
+        "links": [
+            {
+                "title": "Руководство",
+                "url": "http://google.com/"
+            },
+            {
+                "title": "Миссия и принципы",
+                "url": "http://ya.ru/"
+            },
+            {
+                "title": "История",
+                "url": "http://ya.ru/"
+            },
+            {
+                "title": "Музей",
+                "url": "http://ya.ru/"
+            },
+            {
+                "title": "Коллегиальные органы",
+                "url": "http://ya.ru/"
+            }
+        ]
+    },
+    {
+        "title": "Головной офис",
+        "links": [
+            {
+                "title": "ДИТ",
+                "url": "http://google.com/"
+            },
+            {
+                "title": "ДКБиДБО",
+                "url": "http://ya.ru/"
+            },
+            {
+                "title": "ДРП",
+                "url": "http://ya.ru/"
+            },
+            {
+                "title": "ДУиРРС",
+                "url": "http://ya.ru/"
+            }
+        ]
+    },
+    {
+        "title": "Филиалы",
+        "links": [
+            
+        ]
+    },
+    {
+        "title": "Команда",
+        "links": [
+            {
+                "title": "Новому работнику",
+                "url": "http://google.com/"
+            },
+            {
+                "title": "Корпоративный университет",
+                "url": "http://ya.ru/"
+            },
+            {
+                "title": "Корпоративный спорт",
+                "url": "http://ya.ru/"
+            },
+            {
+                "title": "Социальный атлас",
+                "url": "http://ya.ru/"
+            }
+        ]
+    },
+    {
+        "title": "Справочники",
+        "links": [
+            {
+                "title": "Телефонный справочник",
+                "url": "http://google.com/"
+            },
+            {
+                "title": "Продукты и услуги",
+                "url": "http://ya.ru/"
+            },
+            {
+                "title": "База знаний",
+                "url": "http://ya.ru/"
+            },
+            {
+                "title": "Партнеры банка",
+                "url": "http://ya.ru/"
+            }
+        ]
+    },
+    {
+        "title": "Сервисы",
+        "links": [
+            
+        ]
+    }
+]
