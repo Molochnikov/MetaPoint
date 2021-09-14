@@ -1,39 +1,34 @@
 @import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
 
-$themePrimaryColor: "[theme: themePrimary, default: #6185a0]";
-$themeLighterAltColor: "[theme: themeLighterAlt, default: #f7fafb]";
-$themeLighterColor: "[theme: themeLighter, default: #e1e9f0]";
-$themeLightColor: "[theme: themeLight, default: #c8d7e3]";
-$themeTertiaryColor: "[theme: themeTertiary, default: #98b2c6]";
-$themeSecondaryColor: "[theme: themeSecondary, default: #7192ac]";
-$themeDarkAltColor: "[theme: themeDarkAlt, default: #587891]";
-$themeDarkColor: "[theme: themeDark, default: #4a657a]";
-$themeDarkerColor: "[theme: themeDarker, default: #374b5a]";
-$neutralLighterAltColor: "[theme: neutralLighterAlt, default: #9f8787]";
-$neutralLighterColor: "[theme: neutralLighter, default: #9c8585]";
-$neutralLightColor: "[theme: neutralLight, default: #967f7f]";
-$neutralQuaternaryAltColor: "[theme: neutralQuaternaryAlt, default: #8c7777]";
-$neutralQuaternaryColor: "[theme: neutralQuaternary, default: #857171]";
-$neutralTertiaryAltColor: "[theme: neutralTertiaryAlt, default: #806d6d]";
-$neutralTertiaryColor: "[theme: neutralTertiary, default: #bf9d9d]";
-$neutralSecondaryColor: "[theme: neutralSecondary, default: #aa8282]";
-$neutralPrimaryAltColor: "[theme: neutralPrimaryAlt, default: #956a6a]";
-$neutralPrimaryColor: "[theme: neutralPrimary, default: #432020]";
-$neutralDarkColor: "[theme: neutralDark, default: #6c4040]";
-$blackColor: "[theme: black, default: #572f2f]";
-$whiteColor: "[theme: white, default: #a28a8a]";
-$primaryBackgroundColor: "[theme: primaryBackground, default: #a28a8a]";
-$primaryTextColor: "[theme: primaryText, default: #432020]";
-$bodyBackgroundColor: "[theme: bodyBackground, default: #a28a8a]";
-$bodyTextColor: "[theme: bodyText, default: #432020]";
-$disabledBackgroundColor: "[theme: disabledBackground, default: #9c8585]";
-$disabledTextColor: "[theme: disabledText, default: #806d6d]";
+@import '~office-ui-fabric-react/dist/sass/References.scss';
 
-.getcrmsearchdivfloat {
+@import '../../../src/styles/fonts';
+
+/*@font-face {
+  font-family: "Lobster";
+  src: url("./Lobster-Regular.ttf") format("ttf")
+}*/
+
+/*@font-face {
+  font-family: "Lobster";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Lobster Regular"), local("Lobster-Regular"), url(../fonts/Lobster-Regular.ttf) format("ttf");
+  //unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC,
+  //    U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}*/
+
+.lobsterFont {
+  font-family: "LobsterRegular";
+}
+
+
+.crmsearchdivfloat {
   float: right;
 }
 
-.getcrmsearch {
+.crmsearch {
   border: 1px solid rgba(229, 229, 229, 1);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;

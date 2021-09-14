@@ -4,7 +4,8 @@
 
   .main {
     // inherit theme colors
-    background-color: $ms-color-themePrimary;
+    background-color: #f1f8ed;
+    color: #19502e;
     @include ms-fontColor-white;
     padding-left: 10px;
     display: none;

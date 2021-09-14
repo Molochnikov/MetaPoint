@@ -89,28 +89,28 @@ export default class HelloWorldApplicationCustomizer
   @override
   public async onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
-
     if (window.self !== window.top) {
       Log.info(LOG_SOURCE, `I'm iframe`);
-      
     } else {
       Log.info(LOG_SOURCE, `Hiding body`);
       document.body.hidden = true;
       let oldHref = document.location.href;
+      let oldNav = document.getElementById("SuiteNavPlaceHolder");
       document.body.innerHTML = `<iframe src="${document.location.href}" scrolling="no" style="overflow:hidden; position: absolute; top: 0;  left: 0; bottom: 0; right: 0; width: 100%; height: 100%; border: none;" id="MetaPoint"></iframe>`;
+      document.body.appendChild(oldNav);
       //document.body.innerHTML = `<div style="position: relative; height: 100%; width: 100%;overflow: hidden;padding-top: 100%;"><iframe src="${document.location.href}" scrolling="no" style="overflow:hidden; position: absolute; top: 0;  left: 0; bottom: 0; right: 0; width: 100%; height: 100%; border: none;" id="MetaPoint"></iframe></div>`;
       //document.body.innerHTML = `<iframe src="${document.location.href}" onload="this.width=screen.width;this.height=screen.height;" id="MetaPoint"></iframe>`;
       let checkExist = setInterval(function () {
         if (oldHref != frames[0].location.href) {
           //document.body.hidden = true;
           oldHref = frames[0].location.href;
-          //let stateObj = { foo: "bar" };
-          //history.pushState(stateObj, "page 2", frames[0].location.href);
+          let stateObj = { foo: "bar" };
+          let url = '/' + frames[0].location.href.toString().replace(/^(.*:\/\/[^\/]*\/)/,'');
+          console.log(url);
+          history.pushState(stateObj, "", url);
           console.log('changed');
         }
-        //clearInterval(checkExist);
-
-      }, 100); // check every 100ms
+      }, 100);
       console.log(checkExist);
       // const obs = new MutationObserver(function (mutationsList) {
       //   for (const mutation of mutationsList) {
@@ -329,82 +329,30 @@ export default class HelloWorldApplicationCustomizer
             )
 
             let srchdiv = document.createElement('div');
-            srchdiv.classList.add(styles.getcrmsearchdivfloat);
+            srchdiv.classList.add(styles.crmsearchdivfloat);
             srchdiv.appendChild(srch);
             nav.appendChild(srchdiv);
-            //srchbox.classList.add(styles.getcrmsearch);
+
 
           }
         )
     );
 
-    //if (search && navigation) {
-    //console.log("Moving search to navigation");
-    //navigation.appendChild(search);
-    //}
+
 
     const container = document.querySelector('[class^="CanvasZoneContainer"]');
     const main = document.querySelector('[class^="canvasWrapper"]');
 
     if (main) {
       let footer = document.createElement('div');
-      footer.classList.add(styles.bold)
+      footer.classList.add(styles.bold);
+      footer.classList.add(styles.lobsterFont);
       if (container) {
         container.className.split(' ').forEach(function (name) {
           footer.classList.add(name);
         })
       }
-      /*  footer.innerHTML = `
-       <div class="${styles.app}">
-         <div class="${styles.bottom}">
-         <div class="ms-Grid">
-         </br></br>
- <div class="ms-Grid-row">
- <div class="ms-Grid-col ms-sm4 ms-md4 ms-lg3">
- <div class="${styles.bold}">Наш банк</div>
- <div class="LayoutPage-demoBlock">Руководство</div>
- <div class="LayoutPage-demoBlock">Миссия и принципы</div>
- <div class="LayoutPage-demoBlock">История</div>
- <div class="LayoutPage-demoBlock">Музей</div>
- <div class="LayoutPage-demoBlock">Коллегиальные органы</div>
- </br>
- <div class="${styles.bold}">Головной офис</div>
- <div class="LayoutPage-demoBlock">ДИТ</div>
- <div class="LayoutPage-demoBlock">ДКБиДБО</div>
- <div class="LayoutPage-demoBlock">ДРП</div>
- <div class="LayoutPage-demoBlock">ДУиРРС</div>
- <br>
- <div class="${styles.bold}">Филиалы</div>
- </div>
- <div class="ms-Grid-col ms-sm4 ms-md4 ms-lg3">
- <div class="${styles.bold}">Команда</div>
- <div class="LayoutPage-demoBlock">Новому работнику</div>
- <div class="LayoutPage-demoBlock">Корпоративный университет </div>
- <div class="LayoutPage-demoBlock">Корпоративный спорт</div>
- <div class="LayoutPage-demoBlock">Социальный атлас</div>
- <br>
- <div class="${styles.bold}">Справочники</div>
- <div class="LayoutPage-demoBlock">Телефонный справочник</div>
- <div class="LayoutPage-demoBlock">Продукты и услуги</div>
- <div class="LayoutPage-demoBlock">База знаний</div>
- <div class="LayoutPage-demoBlock">Партнеры банка</div>
- <br>
- <div class="${styles.bold}">Сервисы</div>
- </div>
- <div class="ms-Grid-col ms-sm4 ms-md4 ms-lg3">
- <div class="${styles.bold}">Техническая поддержка</div>
- <div class="LayoutPage-demoBlock">Если вы нашли ошибку на Портале,
- пожалуйста,
- создайте заявку на портале самообслуживания </div>
- <br>
- <div class="${styles.tel}">Телефон службы Сервис деск:</div>
- <div class="${styles.phone}">88-88</div>
- </div>
- </div>
- </div>
-          
-         </div>
-       </div>`; */
+
       main.appendChild(footer);
 
       const links: ILinkGroup[] = await this.loadLinks();
