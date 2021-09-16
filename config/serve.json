@@ -17,7 +17,7 @@
             "EditTitle": "Выбрать ссылки",
             "MyLinksSaveSuccess": "Ссылки успешно сохранены!",
             "MyLinksSaveFailed": "Ошибка при сохранении ссылок!",
-            "linksListTitle": "footer_links.json"
+            "linksListTitle": "/SiteAssets/footer_links.json"
           }
         }
       }

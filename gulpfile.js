@@ -12,7 +12,8 @@ const fontLoaderConfig = {
     use: [{
         loader: 'file-loader',
         options: {
-            name: '[name].[ext]',
+            //name: '[name].[ext]',
+            name: '[name]_[sha1:hash:hex:8].[ext]',
             outputPath: 'fonts/'
         }
     }]

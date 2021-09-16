@@ -26,6 +26,36 @@ import SPUserProfileService from '../../services/SPUserProfileService';
 import MyLinksDialog from '../../common/myLinks/MyLinksDialog';
 import IMyLink from '../../common/myLinks/IMyLink';
 import { IPortalFooterEditResult } from './components/PortalFooter/IPortalFooterEditResult';
+
+import { createTheme } from 'office-ui-fabric-react';
+
+import { sp } from "@pnp/sp";
+
+const appTheme = createTheme({
+  disableGlobalClassNames: true,
+  //defaultFontStyle: { fontFamily: 'ProximaNova', fontWeight: 'regular' },
+  fonts: {
+    small: {
+      fontFamily: 'ProximaNova',
+      fontSize: "small",
+    },
+    medium: {
+      fontFamily: 'ProximaNova',
+      fontSize: '13px',
+    },
+    large: {
+      fontFamily: 'ProximaNova',
+      fontSize: '20px',
+      fontWeight: 'bold',
+    },
+    xLarge: {
+      fontFamily: 'ProximaNova',
+      fontSize: '22px',
+      fontWeight: 'bold',
+    },
+  },
+});
+
 const LOG_SOURCE: string = 'HelloWorldApplicationCustomizer';
 
 /**
@@ -88,16 +118,20 @@ export default class HelloWorldApplicationCustomizer
 
   @override
   public async onInit(): Promise<void> {
+    console.log('init');
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
     if (window.self !== window.top) {
       Log.info(LOG_SOURCE, `I'm iframe`);
+      return Promise.resolve<void>();
     } else {
       Log.info(LOG_SOURCE, `Hiding body`);
-      document.body.hidden = true;
+      /*//document.body.hidden = true;
       let oldHref = document.location.href;
-      let oldNav = document.getElementById("SuiteNavPlaceHolder");
-      document.body.innerHTML = `<iframe src="${document.location.href}" scrolling="no" style="overflow:hidden; position: absolute; top: 0;  left: 0; bottom: 0; right: 0; width: 100%; height: 100%; border: none;" id="MetaPoint"></iframe>`;
-      document.body.appendChild(oldNav);
+      //let oldNav = document.getElementById("SuiteNavPlaceHolder");
+      //oldNav.classList.add(styles.crmnav);
+      //await this.waitForElement('#SuiteNavPlaceHolder');
+      //document.body.innerHTML = `<iframe src="${document.location.href}" scrolling="no" style="overflow:hidden; position: fixed; top: 50px;  left: 0; bottom: 0; right: 0; width: 100%; height: 100%; border: none;" id="MetaPoint"></iframe>`;
+      //document.body.appendChild(oldNav);
       //document.body.innerHTML = `<div style="position: relative; height: 100%; width: 100%;overflow: hidden;padding-top: 100%;"><iframe src="${document.location.href}" scrolling="no" style="overflow:hidden; position: absolute; top: 0;  left: 0; bottom: 0; right: 0; width: 100%; height: 100%; border: none;" id="MetaPoint"></iframe></div>`;
       //document.body.innerHTML = `<iframe src="${document.location.href}" onload="this.width=screen.width;this.height=screen.height;" id="MetaPoint"></iframe>`;
       let checkExist = setInterval(function () {
@@ -107,20 +141,20 @@ export default class HelloWorldApplicationCustomizer
           let stateObj = { foo: "bar" };
           let url = '/' + frames[0].location.href.toString().replace(/^(.*:\/\/[^\/]*\/)/,'');
           console.log(url);
-          history.pushState(stateObj, "", url);
+          //history.pushState(stateObj, "", url);
           console.log('changed');
         }
       }, 100);
       console.log(checkExist);
       // const obs = new MutationObserver(function (mutationsList) {
       //   for (const mutation of mutationsList) {
-      //     /*console.log(mutation);
+      //     console.log(mutation);
       //     if (mutation.type === 'childList') {
       //       console.log('A child node has been added or removed.');
       //     }
       //     else if (mutation.type === 'attributes') {
       //       console.log('The ' + mutation.attributeName + ' attribute was modified.');
-      //     }*/
+      //     }
       //     if (oldHref != frames[0].location.href) {
 
       //       oldHref = frames[0].location.href;
@@ -132,6 +166,7 @@ export default class HelloWorldApplicationCustomizer
       //   }
       // });
       // obs.observe(document.querySelector('body'), { childList: true, subtree: true });
+      //return Promise.resolve<void>();*/
     }
 
 
@@ -142,9 +177,8 @@ export default class HelloWorldApplicationCustomizer
       hubSiteUrl = this.context.pageContext.web.absoluteUrl;
     }
 
-    const { sp } = await import(
-      /* webpackChunkName: 'pnp-sp' */
-      "@pnp/sp");
+   // const { sp } = await import(
+     // "@pnp/sp");
 
     // initialize PnP JS library to play with SPFx contenxt
     sp.setup({
@@ -169,7 +203,7 @@ export default class HelloWorldApplicationCustomizer
 
     console.log('end');
 
-    document.body.hidden = false;
+    //document.body.hidden = false;
     return Promise.resolve<void>();
   }
   private _editLinks = async (): Promise<IPortalFooterEditResult> => {
@@ -205,9 +239,9 @@ export default class HelloWorldApplicationCustomizer
   // loads the groups of links from the hub site reference list
   private async loadLinks(): Promise<ILinkGroup[]> {
     console.log('load links');
-    const { sp } = await import(
+    //const { sp } = await import(
       /* webpackChunkName: 'pnp-sp' */
-      "@pnp/sp");
+     // "@pnp/sp");
     //await import( "@pnp/sp/webs");
 
     // prepare the result variable
@@ -221,52 +255,56 @@ export default class HelloWorldApplicationCustomizer
       .orderBy("Title", true)
       .usingCaching({ key: "PnP-PortalFooter-Links" })
       .get(); */
-    let url = "/SiteAssets/footer_links.json";
-    let result: ILinkGroup[] = await sp.web.getFileByServerRelativePath(url).getJSON();
+    let url = this.properties.linksListTitle;
+    try {
+      let result: ILinkGroup[] = await sp.web.getFileByServerRelativePath(url).getJSON();
 
 
-    // map the list items to the results
-    /*  items.map((v, i, a) => {
-       // in case we have a new group title
-       if (result.length === 0 || v.PnPPortalLinkGroup !== result[result.length - 1].title) {
-         // create the new group and add the current item
-         result.push({
-           title: v.PnPPortalLinkGroup,
-           links: [{
+      // map the list items to the results
+      /*  items.map((v, i, a) => {
+         // in case we have a new group title
+         if (result.length === 0 || v.PnPPortalLinkGroup !== result[result.length - 1].title) {
+           // create the new group and add the current item
+           result.push({
+             title: v.PnPPortalLinkGroup,
+             links: [{
+               title: v.Title,
+               url: v.PnPPortalLinkUrl.Url,
+             }],
+           });
+         } else {
+           // or add the current item to the already existing group
+           result[result.length - 1].links.push({
              title: v.Title,
              url: v.PnPPortalLinkUrl.Url,
-           }],
-         });
-       } else {
-         // or add the current item to the already existing group
-         result[result.length - 1].links.push({
-           title: v.Title,
-           url: v.PnPPortalLinkUrl.Url,
-         });
-       }
-     }); */
+           });
+         }
+       }); */
 
-    // get the list of personal items from the User Profile Service
-    let upsService: SPUserProfileService = new SPUserProfileService(this.context);
-    let myLinksJson: any = await upsService.getUserProfileProperty(this.properties.personalItemsStorageProperty);
+      // get the list of personal items from the User Profile Service
+      let upsService: SPUserProfileService = new SPUserProfileService(this.context);
+      let myLinksJson: any = await upsService.getUserProfileProperty(this.properties.personalItemsStorageProperty);
 
-    // if we have personalizes links
-    if (myLinksJson && (myLinksJson.length > 0)) {
-      this._myLinks = JSON.parse(myLinksJson) as IMyLink[];
+      // if we have personalizes links
+      if (myLinksJson && (myLinksJson.length > 0)) {
+        this._myLinks = JSON.parse(myLinksJson) as IMyLink[];
 
-      // add all of them to the "My Links" group
-      if (this._myLinks.length > 0) {
-        result.push({
-          title: strings.MyLinks,
-          links: this._myLinks,
-        });
+        // add all of them to the "My Links" group
+        if (this._myLinks.length > 0) {
+          result.push({
+            title: strings.MyLinks,
+            links: this._myLinks,
+          });
+        }
+      } else {
+        // if no personal links are available, initialize the list of personal links with an empty array
+        this._myLinks = [];
       }
-    } else {
-      // if no personal links are available, initialize the list of personal links with an empty array
-      this._myLinks = [];
-    }
 
-    return (result);
+      return (result);
+    } catch (e) {
+      console.log(e.Message)
+    }
   }
 
 
@@ -279,7 +317,14 @@ export default class HelloWorldApplicationCustomizer
 
   private async _renderPlaceHolders(): Promise<void> {
     console.log("_renderPlaceHolders()");
+    /*if (!this._bottomPlaceholder) {
+      this._bottomPlaceholder = this.context.placeholderProvider.tryCreateContent(
+        PlaceholderName.Bottom,
+        { onDispose: this._onDispose }
+      );
 
+      this._bottomPlaceholder.domElement.classList.add(styles.crmbottomplaceholder)
+    }*/
 
     //hide banner
     //this.waitForElement('[class^="banner"]').then(
@@ -289,7 +334,7 @@ export default class HelloWorldApplicationCustomizer
 
 
     //replace navigation if exist
-    this.waitForElement('[class^="searchBoxContainer"]').then(
+    /*this.waitForElement('[class^="searchBoxContainer"]').then(
       (srch: HTMLElement) =>
         this.waitForElement('[class^="o365cs-nav-centerAlign"]').then(
           (nav: HTMLElement) => {
@@ -336,7 +381,7 @@ export default class HelloWorldApplicationCustomizer
 
           }
         )
-    );
+    );*/
 
 
 
@@ -346,16 +391,18 @@ export default class HelloWorldApplicationCustomizer
     if (main) {
       let footer = document.createElement('div');
       footer.classList.add(styles.bold);
-      footer.classList.add(styles.lobsterFont);
+      //footer.classList.add(styles.lobsterFont);
       if (container) {
         container.className.split(' ').forEach(function (name) {
           footer.classList.add(name);
-        })
+        });
       }
 
       main.appendChild(footer);
 
       const links: ILinkGroup[] = await this.loadLinks();
+      const user = await sp.web.currentUser.get();
+      console.log(`admin :${user.IsSiteAdmin}`);
 
       const element: React.ReactElement<IPortalFooterProps> = React.createElement(
         PortalFooter,
@@ -364,6 +411,7 @@ export default class HelloWorldApplicationCustomizer
           copyright: this.properties.copyright,
           support: this.properties.support,
           onLinksEdit: this._editLinks,
+          editable: user.IsSiteAdmin
         }
       );
 

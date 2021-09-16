@@ -1,8 +1,8 @@
 @import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
 
-@import '~office-ui-fabric-react/dist/sass/References.scss';
+@import "~office-ui-fabric-react/dist/sass/References.scss";
 
-@import '../../../src/styles/fonts';
+@import "../../../src/styles/fonts";
 
 /*@font-face {
   font-family: "Lobster";
@@ -20,9 +20,16 @@
 }*/
 
 .lobsterFont {
-  font-family: "LobsterRegular";
+  @include ms-fontSize-42;
 }
 
+.crmnav {
+  position: absolute;
+}
+
+.crmbottomplaceholder {
+  padding-top: 50px;
+}
 
 .crmsearchdivfloat {
   float: right;
@@ -36,6 +43,10 @@
   border-bottom-right-radius: 8px;
 }
 
+.ms-Layer {
+  display: none;
+}
+
 // Hide any class that starts with feedback
 div[class^="feedback_"] {
   display: none !important;
@@ -44,6 +55,11 @@ div[class^="feedback_"] {
 body {
   background-color: #eceeec;
   color: black;
+  //font-family: "ProximaNova" !important;
+}
+
+:global .ms-Fabric {
+  font-family: "ProximaNova" !important;
 }
 
 .app {

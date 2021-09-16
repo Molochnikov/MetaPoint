@@ -5,4 +5,5 @@ export interface ILinksProps {
   loadingLinks: boolean;
   visible: boolean;
   onMyLinksEdit: () => Promise<void>;
+  editable: boolean;
 }

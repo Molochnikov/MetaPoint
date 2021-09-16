@@ -1,12 +1,15 @@
 @import '~office-ui-fabric-react/dist/sass/References.scss';
 
 .links {
+  //background-color: rgb(166,206,57);
+  //color: rgb(43,96,48);
   background-color: #f1f8ed;
   color: #19502e;
   transition: height 0.5s;
   overflow: hidden;
   position: relative;
   height: 0;
+  //padding-top:50px;
 
   .content {
     padding: 25px;
@@ -44,7 +47,8 @@
   }
 
   .editButton {
-    color: inherit;
+    font-weight: bold;
+    //color: inherit;
     position: absolute;
     top: 0.5em;
     right: 0.5em;

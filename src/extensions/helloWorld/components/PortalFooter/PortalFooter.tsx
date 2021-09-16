@@ -69,6 +69,7 @@ export class PortalFooter extends React.Component<IPortalFooterProps, IPortalFoo
           <MessageBar
             messageBarType={MessageBarType.error}>{strings.MyLinksSaveFailed}</MessageBar>) : null}
         <Links links={this.state.links}
+          editable={this.props.editable}
           loadingLinks={this.state.loadingLinks}
           visible={this.state.expanded}
           onMyLinksEdit={this._handleLinksEdit} />

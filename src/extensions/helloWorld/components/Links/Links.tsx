@@ -11,6 +11,7 @@ export class Links extends React.Component<ILinksProps, {}> {
   }
 
   public render(): React.ReactElement<ILinksProps> {
+    //let userProps  = (async function() { return await sp.web.currentUser.get(); })();
     return (
       <div className={`${styles.links} ${this.props.visible ? styles.visible : styles.hidden}`}>
         <div className={styles.content}>
@@ -29,11 +30,12 @@ export class Links extends React.Component<ILinksProps, {}> {
             </div>
           </div>
         </div>
-        <DefaultButton
+        <a href="javascript:void(0);"
+          {... this.props.editable ? {} : {hidden: true}}
           title={strings.EditTitle}
           className={styles.editButton}
           onClick={this._handleEdit}
-        >{strings.Edit}</DefaultButton>
+        >{strings.Edit}</a>
       </div>
     );
   }
