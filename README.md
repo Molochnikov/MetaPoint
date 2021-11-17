@@ -1,10 +1,26 @@
-# MetaPoint
-Fully customizable SharePoint in one SPFx extension for all people who thinks that **it's a bad idea not to follow the idea**.
-[Microsoft was going to do one thing and then decided to do another thing.](https://www.windowscentral.com/wasnt-windows-10-supposed-be-last-version-windows)
+## app-extension
 
-|Browser|Tested |
---- | --- |
-|Edge|93.0.961.38|
-|Chrome|93.0.4577.63|
-|Firefox|92.0|
-|IE|IE? What, IE? It's a browser?! Never heard of that... Oh, you maybe meant Netscape!|
+This is where you include your WebPart documentation.
+
+### Building the code
+
+```bash
+git clone the repo
+npm i
+npm i -g gulp
+gulp
+```
+
+This package produces the following:
+
+* lib/* - intermediate-stage commonjs build artifacts
+* dist/* - the bundled script, along with other resources
+* deploy/* - all resources which should be uploaded to a CDN.
+
+### Build options
+
+gulp clean - TODO
+gulp test - TODO
+gulp serve - TODO
+gulp bundle - TODO
+gulp package-solution - TODO

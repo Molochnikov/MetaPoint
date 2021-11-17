@@ -7,7 +7,7 @@ import styles from './MyLinks.module.scss';
 //import * as strings from 'MyLinksStringsDialog';
 
 // import additional controls/components
-import { BaseDialog, Dialog, IDialogConfiguration } from '@microsoft/sp-dialog';
+import { BaseDialog, Dialog, IDialogConfiguration} from '@microsoft/sp-dialog';
 import {
   DefaultButton,
   TextField,
@@ -20,7 +20,9 @@ import {
   SelectionMode,
   IColumn,
   DialogFooter,
-  DialogContent
+  DialogContent,
+  TeachingBubble,
+  TeachingBubbleContent
 } from 'office-ui-fabric-react';
 
  interface IMyLinksStrings {

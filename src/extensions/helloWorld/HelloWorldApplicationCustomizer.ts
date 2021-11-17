@@ -5,8 +5,7 @@ import { Log } from '@microsoft/sp-core-library';
 import {
   BaseApplicationCustomizer,
   PlaceholderContent,
-  PlaceholderName,
-
+  PlaceholderName
 } from '@microsoft/sp-application-base';
 import { Dialog } from '@microsoft/sp-dialog';
 
@@ -27,7 +26,7 @@ import MyLinksDialog from '../../common/myLinks/MyLinksDialog';
 import IMyLink from '../../common/myLinks/IMyLink';
 import { IPortalFooterEditResult } from './components/PortalFooter/IPortalFooterEditResult';
 
-import { createTheme } from 'office-ui-fabric-react';
+import { createTheme,getTheme} from 'office-ui-fabric-react';
 
 import { sp } from "@pnp/sp";
 

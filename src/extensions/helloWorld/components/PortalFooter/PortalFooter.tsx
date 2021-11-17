@@ -8,7 +8,8 @@ import {
   ActionButton,
   Label,
   MessageBar,
-  MessageBarType
+  MessageBarType,
+  TeachingBubble
 } from 'office-ui-fabric-react';
 import * as strings from 'HelloWorldApplicationCustomizerStrings';
 import { ILinkGroup } from './ILinkGroup';
